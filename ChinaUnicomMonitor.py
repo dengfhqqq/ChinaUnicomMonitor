@@ -1,5 +1,10 @@
 # encoding: utf-8
 """
+cron: 0 9,21 * * *
+new Env('联通余量监控');
+"""
+
+import requests
 联通余量查询 (进度条反转 + 日志增强版)
 
 【更新说明】
@@ -11,7 +16,7 @@
 【环境变量】
 export chinaUnicomCookie="token1&token2"
 export UNICOM_PUSH_CFG="1,2"   (可选: 指定推送第几个号)
-export UNICOM_DETAIL_LEVEL="1" (可选: 1=显示详细流量包)
+export UNICOM_DETAIL_LEVEL="1" (可选: 1=显示详细流量包，不创建或者0=简约版)
 """
 
 import requests
