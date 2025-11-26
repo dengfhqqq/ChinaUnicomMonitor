@@ -5,7 +5,7 @@
 ## 📖 简介
 
 这是一个运行在 **青龙面板** 等环境下的 Python 脚本，用于监控中国联通的话费与流量余额。
-为了应对不同的使用场景，本项目提供了 **两个版本**：
+为了应对不同的使用场景，本项目提供了 **两个版本**（拉库时会自动同时下载）：
 
 | 版本文件 | 核心凭证 | 优点 | 缺点 | 适用人群 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -14,18 +14,36 @@
 
 ---
 
-## 🛠 抓包与配置指南
+## 🚀 青龙部署 (一键拉取双版本)
 
-### 🅰️ Token 版配置 (`ChinaUnicom_Token.py`)
+**直接在青龙面板添加一条【订阅/定时】任务：**
 
-**1. 获取 Token (注意接口变化)**
-* 打开联通 APP -> **退出登录** -> **切换账号登录**。
-* 开启抓包工具 -> 使用 **短信验证码** 登录。
-* 搜索接口：`https://loginxhm.10010.com/mobileService/onLine.htm`
-* 在 **请求体 (Body)** 中找到 `token_online` 的值。
-
-**2. 环境变量**
 ```bash
+ql repo [https://github.com/dengfhqqq/ChinaUnicomMonitor.git](https://github.com/dengfhqqq/ChinaUnicomMonitor.git) "ChinaUnicom_" "" "requirements.txt" "main"
+说明：
+
+此命令会自动拉取 Token版 和 Cookie版 两个脚本。
+
+拉取完成后，请在定时任务列表中，启用你需要的那一个版本，禁用另一个即可。
+
+建议定时规则：0 9,19 * * * (每天早晚9点运行)。
+
+🛠 抓包与配置指南
+🅰️ Token 版配置 (ChinaUnicom_Token.py)
+1. 获取 Token (注意接口变化)
+
+打开联通 APP -> 退出登录 -> 切换账号登录。
+
+开启抓包工具 -> 使用 短信验证码 登录。
+
+搜索接口：https://loginxhm.10010.com/mobileService/onLine.htm
+
+在 请求体 (Body) 中找到 token_online 的值。
+
+2. 环境变量
+
+Bash
+
 export chinaUnicomCookie="你的token"  # 多账号用 & 或换行隔开
 export UNICOM_MONITOR_LIMIT="30"     # (可选) 开启免流跳点监控，单位MB
 🅱️ Cookie 版配置 (ChinaUnicom_Cookie.py)
