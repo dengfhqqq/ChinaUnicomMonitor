@@ -19,7 +19,7 @@
 **直接在青龙面板添加一条【订阅/定时】任务：**
 
 ```bash
-ql repo [https://github.com/dengfhqqq/ChinaUnicomMonitor.git](https://github.com/dengfhqqq/ChinaUnicomMonitor.git) "ChinaUnicom_" "" "requirements.txt" "main"
+ql repo https://github.com/dengfhqqq/ChinaUnicomMonitor.git "ChinaUnicom_" "" "requirements.txt" "main"
 说明：
 
 此命令会自动拉取 Token版 和 Cookie版 两个脚本。
